@@ -1,4 +1,6 @@
 import { Router } from "express"
+import asyncHandler from "express-async-handler"
+
 import {
 	authUser,
 	createUser,
@@ -9,10 +11,10 @@ import { protect } from "../middleware/auth.middleware"
 
 const router = Router()
 
-router.post("/", createUser)
-router.post("/auth", authUser)
-router.post("/logout", logoutUser)
+router.post("/", asyncHandler(createUser))
+router.post("/auth", asyncHandler(authUser))
+router.post("/logout", asyncHandler(logoutUser))
 
-router.route("/getUser").get(protect, getUser)
+router.route("/getUser").get(protect, asyncHandler(getUser))
 
 export default router

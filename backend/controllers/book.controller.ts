@@ -1,12 +1,12 @@
 import type { Request, Response } from "express"
 import prismaClient from "../prisma/prisma-client"
 
-export async function createBook(req: any, res: Response) {
+export async function createBook(req: Request, res: Response) {
 	const body = req.body
 	const book = await prismaClient.book.create({
 		data: {
 			...body,
-			userId: req.user?.id,
+			userId: req.user.id,
 			pages: +body.pages,
 			read: Boolean(body.read),
 		},
@@ -15,10 +15,10 @@ export async function createBook(req: any, res: Response) {
 	res.status(201).json(book)
 }
 
-export async function readBooks(req: any, res: Response) {
+export async function readBooks(req: Request, res: Response) {
 	const books = await prismaClient.book.findMany({
 		where: {
-			userId: req.user?.id,
+			userId: req.user.id,
 		},
 	})
 

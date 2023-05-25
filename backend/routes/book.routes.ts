@@ -1,4 +1,5 @@
 import { Router } from "express"
+import asyncHandler from "express-async-handler"
 import {
 	createBook,
 	deleteBook,
@@ -9,8 +10,14 @@ import { protect } from "../middleware/auth.middleware"
 
 const router = Router()
 
-router.route("/books").get(protect, readBooks).post(protect, createBook)
+router
+	.route("/books")
+	.get(protect, asyncHandler(readBooks))
+	.post(protect, asyncHandler(createBook))
 
-router.route("/books/:id").put(protect, updateBook).delete(protect, deleteBook)
+router
+	.route("/books/:id")
+	.put(protect, asyncHandler(updateBook))
+	.delete(protect, asyncHandler(deleteBook))
 
 export default router

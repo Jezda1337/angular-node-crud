@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt"
 import type { Request, Response } from "express"
 import prismaClient from "../prisma/prisma-client"
 import generateToken from "../utils/generateToken"
@@ -16,7 +17,9 @@ export async function authUser(req: Request, res: Response) {
 		throw new Error("Invalid email or password.")
 	}
 
-	if (user && user.password === password) {
+	const comparedPasswors = await bcrypt.compare(password, user.password)
+
+	if (user && comparedPasswors) {
 		generateToken(res, user.id)
 
 		res.status(200).json({
@@ -30,7 +33,7 @@ export async function authUser(req: Request, res: Response) {
 
 export async function createUser(req: Request, res: Response) {
 	const body = req.body
-	const { email } = body
+	const { email, password } = body
 
 	const userExist = await prismaClient.user.findFirst({
 		where: {
@@ -43,9 +46,13 @@ export async function createUser(req: Request, res: Response) {
 		throw new Error("User already exist.")
 	}
 
+	const salt = await bcrypt.genSalt(10)
+	const hashedPassword = await bcrypt.hash(password, salt)
+
 	const user = await prismaClient.user.create({
 		data: {
 			...body,
+			password: hashedPassword,
 		},
 	})
 
@@ -76,10 +83,10 @@ export async function logoutUser(_req: Request, res: Response) {
 	})
 }
 
-export async function getUser(req: any, res: Response) {
+export async function getUser(req: Request, res: Response) {
 	const user = await prismaClient.user.findFirst({
 		where: {
-			id: req.user?.id,
+			id: req.user.id,
 		},
 	})
 
