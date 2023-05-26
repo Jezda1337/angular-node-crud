@@ -28,6 +28,9 @@ export async function authUser(req: Request, res: Response) {
 			lastName: user.lastName,
 			email: user.email,
 		})
+	} else {
+		res.status(401)
+		throw new Error("Invalid email or password.")
 	}
 }
 
@@ -43,7 +46,7 @@ export async function createUser(req: Request, res: Response) {
 
 	if (userExist) {
 		res.status(400)
-		throw new Error("User already exist.")
+		throw new Error("This email is already in use, please choose another.")
 	}
 
 	const salt = await bcrypt.genSalt(10)

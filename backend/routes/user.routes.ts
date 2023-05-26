@@ -11,7 +11,7 @@ import { protect } from "../middleware/auth.middleware"
 
 const router = Router()
 
-router.post("/", asyncHandler(createUser))
+router.post("/signup", asyncHandler(createUser))
 router.post("/auth", asyncHandler(authUser))
 router.post("/logout", asyncHandler(logoutUser))
 
