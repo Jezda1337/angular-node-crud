@@ -1,0 +1,8 @@
+.form-field-checkbox {
+	margin-bottom: 1rem;
+}
+
+.form-action-btns {
+	display: flex;
+	gap: 1rem;
+}

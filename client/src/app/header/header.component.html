@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <span>Books</span>
+  <span class="example-spacer"></span>
+  <!-- <div *ngIf="!isAuthenticated"> -->
+  <!--   <button mat-raised-button> -->
+  <!--     <mat-icon>login</mat-icon> -->
+  <!--     Login -->
+  <!--   </button> -->
+  <!-- </div> -->
+  <div *ngIf="userFullName" class="user-name">
+    <span>
+      {{ userFullName }}
+    </span>
+  </div>
+  <div *ngIf="isAuthenticated">
+    <button mat-raised-button (click)="handleSignout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </div>
+</mat-toolbar>

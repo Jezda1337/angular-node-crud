@@ -4,7 +4,11 @@
 	"description": "",
 	"main": "dist/index.js",
 	"scripts": {
-		"dev": "nodemon --files index.ts"
+		"dev": "nodemon --files index.ts",
+		"prod": "npm run dev && prisma migrate deploy",
+		"build": "tsc --build",
+		"start:prod": "node dist/index.js",
+		"start:migrate:prod": "prisma migrate dev --name init && prisma generate && npm run start:prod"
 	},
 	"keywords": [],
 	"author": "",

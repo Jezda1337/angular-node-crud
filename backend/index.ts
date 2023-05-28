@@ -11,15 +11,25 @@ const port = process.env.PORT || 3000
 
 const app = express()
 
+const corsOptions = {
+	origin: [
+		"http://localhost",
+		"http://localhost:3000",
+		"http://localhost:5432",
+	],
+	credentials: true,
+}
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(
-	cors({
-		origin: "http://localhost:4200",
-		allowedHeaders: ["Content-Type", "Authorization"],
-		credentials: true,
-	})
-)
+app.use(cors(corsOptions))
+// app.use(
+// 	cors({
+// 		origin: "http://localhost:80",
+// 		allowedHeaders: ["Content-Type", "Authorization"],
+// 		credentials: true,
+// 	})
+// )
 app.use(cookieParser(process.env.JWT_SECRET))
 
 // app.use("/api/v1", [userRoutes, bookRouter])

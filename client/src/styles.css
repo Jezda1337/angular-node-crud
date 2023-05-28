@@ -1,4 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-inline: 3rem;
+}
+
+.form-field {
+	width: 100%;
+	min-width: 320px !important;
+}
+
+form {
+	padding: 1rem;
+}
+
+.error-message {
+	padding: 1rem;
+	background: #ff000057;
+	border-radius: 5px;
+	margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+	form {
+		padding: 0.5rem;
+	}
+	.wrapper {
+		padding-inline: 1rem;
+	}
+}

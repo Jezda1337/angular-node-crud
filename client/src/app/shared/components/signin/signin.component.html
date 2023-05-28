@@ -1,0 +1,31 @@
+<form class="signin-form" [formGroup]="fg" (ngSubmit)="onSubmit()">
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="E.g. example@example.com" formControlName="email" required email />
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Password</mat-label>
+      <input [type]="hide ? 'password' : 'text'" matInput placeholder="******" formControlName="password" required
+        minlength="2" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+  </div>
+  <div>
+    <button color="primary" type="submit" [disabled]="!fg.valid" mat-raised-button>
+      Sign in
+    </button>
+  </div>
+</form>
