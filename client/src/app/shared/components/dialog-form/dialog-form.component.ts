@@ -1,8 +1,9 @@
 import { Component, Inject } from "@angular/core"
-import { FormControl, FormGroup } from "@angular/forms"
+import { FormControl, FormGroup, Validators } from "@angular/forms"
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog"
 import { take } from "rxjs"
 import { BooksService } from "src/app/core/services/books.service"
+import { noWhiteSpaceValidator } from "../../validators/no-white-space.validator"
 
 @Component({
 	selector: "app-dialog-form",
@@ -17,9 +18,9 @@ export class DialogFormComponent {
 	) {}
 
 	fg = new FormGroup({
-		title: new FormControl(""),
-		author: new FormControl(""),
-		pages: new FormControl(0),
+		title: new FormControl("", [noWhiteSpaceValidator()]),
+		author: new FormControl("", [noWhiteSpaceValidator()]),
+		pages: new FormControl(0, [Validators.min(1)]),
 		read: new FormControl(false),
 		description: new FormControl(""),
 	})
@@ -37,6 +38,7 @@ export class DialogFormComponent {
 
 		this.booksService
 			.createBook(title, author, pages!, read!, description!)
+
 			.subscribe({
 				next: () => {
 					this.booksService.readBooks().pipe(take(1)).subscribe()

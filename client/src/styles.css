@@ -20,6 +20,10 @@ body {
 	min-width: 320px !important;
 }
 
+.form-field-checkbox {
+	margin-bottom: 1.5rem;
+}
+
 form {
 	padding: 1rem;
 }
@@ -29,6 +33,24 @@ form {
 	background: #ff000057;
 	border-radius: 5px;
 	margin-bottom: 2rem;
+}
+
+.info {
+	display: flex;
+	justify-content: space-between;
+}
+
+.info > :first-child {
+	font-weight: 600;
+}
+
+.actions {
+	margin-top: 1rem;
+}
+
+.action-buttons {
+	display: flex;
+	justify-content: space-between;
 }
 
 @media screen and (max-width: 480px) {

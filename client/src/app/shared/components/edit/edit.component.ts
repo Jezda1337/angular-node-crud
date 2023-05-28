@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from "@angular/core"
-import { FormControl, FormGroup } from "@angular/forms"
+import { FormControl, FormGroup, Validators } from "@angular/forms"
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog"
 import { map, tap } from "rxjs"
 import { BooksService } from "src/app/core/services/books.service"
 import { Book } from "../../interfaces/book.model"
+import { noWhiteSpaceValidator } from "../../validators/no-white-space.validator"
 import { DialogFormComponent } from "../dialog-form/dialog-form.component"
 
 @Component({
@@ -19,9 +20,9 @@ export class EditComponent implements OnInit {
 	) {}
 
 	fg = new FormGroup({
-		title: new FormControl(""),
-		author: new FormControl(""),
-		pages: new FormControl(0),
+		title: new FormControl("", [noWhiteSpaceValidator()]),
+		author: new FormControl("", [noWhiteSpaceValidator()]),
+		pages: new FormControl(0, [Validators.min(1)]),
 		read: new FormControl(false),
 		description: new FormControl(""),
 	})

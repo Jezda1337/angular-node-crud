@@ -23,10 +23,9 @@ export class HeaderComponent implements OnInit {
 				this.userFullName = user.firstName + " " + user.lastName
 				this.isAuthenticated = !this.isAuthenticated
 			},
-			error: (error) => {
+			error: () => {
 				this.isAuthenticated = !this.isAuthenticated
 				this.userFullName = null
-				console.log(error)
 			},
 		})
 	}

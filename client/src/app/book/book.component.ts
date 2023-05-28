@@ -25,7 +25,6 @@ export class BookComponent implements OnInit {
 	bookId: string | null = null
 
 	editBook(id: string | undefined) {
-		console.log(id)
 		const dialogRef = this.dialog.open(EditComponent, {
 			data: { id },
 			width: "100%",
