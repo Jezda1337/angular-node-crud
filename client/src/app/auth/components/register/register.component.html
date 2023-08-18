@@ -1,0 +1,34 @@
+<div class="form-container">
+	<form
+		[formGroup]="form"
+		class="register-form">
+		<h2>Register</h2>
+
+		<mat-form-field>
+			<mat-label>User Name</mat-label>
+			<input
+				matInput
+				type="text"
+				formControlName="username" />
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Email</mat-label>
+			<input
+				matInput
+				type="email"
+				formControlName="email" />
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Password</mat-label>
+			<input
+				matInput
+				type="password"
+				formControlName="password" />
+		</mat-form-field>
+		<button
+			mat-raised-button
+			color="primary">
+			Signup
+		</button>
+	</form>
+</div>
