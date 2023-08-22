@@ -35,6 +35,12 @@ dependencies:
   '@angular/router':
     specifier: ^16.0.0
     version: 16.0.0(@angular/common@16.0.0)(@angular/core@16.0.0)(@angular/platform-browser@16.0.0)(rxjs@7.8.0)
+  '@ngrx/store':
+    specifier: ^16.2.0
+    version: 16.2.0(@angular/core@16.0.0)(rxjs@7.8.0)
+  '@ngrx/store-devtools':
+    specifier: ^16.2.0
+    version: 16.2.0(@ngrx/store@16.2.0)(rxjs@7.8.0)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.0
@@ -2694,6 +2700,28 @@ packages:
     dependencies:
       '@material/feature-targeting': 15.0.0-canary.bc9ae6c9c.0
       '@material/theme': 15.0.0-canary.bc9ae6c9c.0
+      tslib: 2.5.0
+    dev: false
+
+  /@ngrx/store-devtools@16.2.0(@ngrx/store@16.2.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-m7mkNpIIp8fA8yNG5T0ZKm1RCP2fE0IVBEtcbj2Z/88fW4vyvobVBdBqha6zgYTuA5X4m28npMra9GPNPsuDLA==}
+    peerDependencies:
+      '@ngrx/store': 16.2.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@ngrx/store': 16.2.0(@angular/core@16.0.0)(rxjs@7.8.0)
+      rxjs: 7.8.0
+      tslib: 2.5.0
+    dev: false
+
+  /@ngrx/store@16.2.0(@angular/core@16.0.0)(rxjs@7.8.0):
+    resolution: {integrity: sha512-C7oIUC87xXV+1dTGUwYG/L4p0IZdYv/Ou1nTL/LffyAHllmmygTA5gzLB87abLOhucAxlFIQMQ8t/GSxdk/+QA==}
+    peerDependencies:
+      '@angular/core': ^16.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 16.0.0(rxjs@7.8.0)(zone.js@0.13.0)
+      rxjs: 7.8.0
       tslib: 2.5.0
     dev: false
 
@@ -5360,7 +5388,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.5.0
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -6596,7 +6624,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.5.0
     dev: true
 
   /safe-buffer@5.1.2:

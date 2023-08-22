@@ -1,8 +1,9 @@
 <div class="form-container">
 	<form
 		[formGroup]="form"
-		class="register-form">
-		<h2>Register</h2>
+		(ngSubmit)="handleSubmite()"
+		class="signup-form">
+		<h2>Signup</h2>
 
 		<mat-form-field>
 			<mat-label>User Name</mat-label>
@@ -26,6 +27,7 @@
 				formControlName="password" />
 		</mat-form-field>
 		<button
+			type="submit"
 			mat-raised-button
 			color="primary">
 			Signup
